@@ -6,8 +6,8 @@ export interface NoteAttrs {
   text: string;
   data: string;
   favorite: boolean;
-  categoryId: Category['id'];
-  tags: string[];
+  categoryId: number;
+  tagsIds: number[];
 }
 
 export class Note {
@@ -16,8 +16,8 @@ export class Note {
   text: string;
   data: string;
   favorite: boolean;
-  categoryId: Category['id'];
-  tags: string[];
+  categoryId: number;
+  tagsIds: number[];
 
   constructor(attrs: NoteAttrs) {
     this.id = attrs.id;
@@ -26,6 +26,6 @@ export class Note {
     this.data = attrs.data;
     this.favorite = attrs.favorite;
     this.categoryId = attrs.categoryId;
-    this.tags = attrs.tags;
+    this.tagsIds = attrs.tagsIds;
   }
 }

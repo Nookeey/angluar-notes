@@ -1,42 +1,147 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-[500px]">
-  <div>
-    <mat-form-field class="w-full">
-      <mat-label>Title</mat-label>
-      <input
-        type="text"
-        matInput
-        [formControl]="form.controls.title"
-        placeholder="Title"
-      />
-      <mat-error *ngIf="form.controls.title.hasError('required')">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </div>
-
-  <div>
-    <mat-form-field class="w-full">
-      <mat-label>Note</mat-label>
-      <textarea
-        matInput
-        type="text"
-        [formControl]="form.controls.text"
-        placeholder="Note"
-      ></textarea>
-      <mat-error *ngIf="form.controls.text.hasError('required')">
-        Note is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </div>
-
-  <div class="flex justify-end">
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="form.invalid"
+<mat-tab-group>
+  <mat-tab label="Note">
+    <form
+      [formGroup]="formNote"
+      (ngSubmit)="onSubmitNote()"
+      class="w-[500px] h-[300px]"
     >
-      Save
-    </button>
-  </div>
-</form>
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Title</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="formNote.controls.title"
+            placeholder="Title"
+          />
+          <mat-error *ngIf="formNote.controls.title.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Note</mat-label>
+          <textarea
+            matInput
+            type="text"
+            [formControl]="formNote.controls.text"
+            placeholder="Note"
+          ></textarea>
+          <mat-error *ngIf="formNote.controls.text.hasError('required')">
+            Note is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Choose one</mat-label>
+          <mat-select [formControl]="formNote.controls.categoryId">
+            <mat-option value="0"></mat-option>
+            <mat-option
+              *ngFor="let category of catrgories | async"
+              [value]="category.id"
+              >{{ category.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="formNote.invalid"
+        >
+          Save note
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Category">
+    <form
+      [formGroup]="formCategory"
+      (ngSubmit)="onSubmitCategory()"
+      class="w-[500px] h-[300px]"
+    >
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Name</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="formCategory.controls.name"
+            placeholder="Title"
+          />
+          <mat-error *ngIf="formCategory.controls.name.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Color</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="formCategory.controls.color"
+            placeholder="Title"
+          />
+          <mat-error *ngIf="formCategory.controls.color.hasError('required')">
+            Color is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="formCategory.invalid"
+        >
+          Save category
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+
+  <mat-tab label="Tag">
+    <form
+      [formGroup]="formTag"
+      (ngSubmit)="onSubmitTag()"
+      class="w-[500px] h-[300px]"
+    >
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Name</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="formTag.controls.name"
+            placeholder="Title"
+          />
+          <mat-error *ngIf="formTag.controls.name.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-end">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="formTag.invalid"
+        >
+          Save tag
+        </button>
+      </div>
+    </form>
+  </mat-tab>
+</mat-tab-group>

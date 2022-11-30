@@ -1,0 +1,97 @@
+{
+  "notes": [
+    {
+      "id": 993,
+      "title": "sadsa d",
+      "text": "sad sad ",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 223,
+      "tagsIds": [
+        771,
+        19
+      ]
+    },
+    {
+      "id": 445,
+      "title": "dsdasd",
+      "text": " asdas dsa d",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 955,
+      "tagsIds": [
+        771
+      ]
+    },
+    {
+      "id": 776,
+      "title": "asd sad ",
+      "text": "da sds ads ad sad",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 592,
+      "tagsIds": []
+    },
+    {
+      "id": 505,
+      "title": "dsad ",
+      "text": "asd sad sad",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 1,
+      "tagsIds": [
+        771
+      ]
+    },
+    {
+      "id": 176,
+      "title": "asd sad",
+      "text": "sad asd sad",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 1,
+      "tagsIds": []
+    },
+    {
+      "id": 600,
+      "title": "dsadas",
+      "text": "d asdsad",
+      "data": "30.11.2022",
+      "favorite": false,
+      "categoryId": 955,
+      "tagsIds": []
+    }
+  ],
+  "categories": [
+    {
+      "id": 223,
+      "name": "Amber",
+      "color": "rgb(253 230 138)"
+    },
+    {
+      "id": 955,
+      "name": "Lime",
+      "color": "rgb(217 249 157)"
+    },
+    {
+      "id": 592,
+      "name": "Cyan",
+      "color": "rgb(165 243 252)"
+    },
+    {
+      "id": 547,
+      "name": "Purple",
+      "color": "rgb(233 213 255)"
+    }
+  ],
+  "tags": [
+    {
+      "id": 771,
+      "name": "Forntend"
+    },
+    {
+      "id": 19,
+      "name": "UX/UI"
+    }
+  ]
+}
