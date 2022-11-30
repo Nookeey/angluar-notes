@@ -4,11 +4,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/notes/services/categories.service';
 import { TagsService } from 'src/app/notes/services/tags.service';
+import { Note } from 'src/app/notes/interfaces/note';
 
 type noteFormGroup = FormGroup<{
   title: FormControl<string>;
   text: FormControl<string>;
-  categoryId: FormControl<number>;
+  categoryId?: FormControl<number>;
+  tagsIds?: FormControl<number[]>;
 }>;
 
 type categoryFormGroup = FormGroup<{
@@ -29,7 +31,7 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
   catrgories = this.categoriesService.categories;
   tags = this.tagsService.tags;
 
-  formNote: noteFormGroup = new FormGroup({
+  formNote = new FormGroup({
     title: new FormControl('', {
       validators: [Validators.required],
       nonNullable: true,
@@ -39,6 +41,10 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
       nonNullable: true,
     }),
     categoryId: new FormControl(0, {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+    tagsIds: new FormControl([], {
       validators: [Validators.required],
       nonNullable: true,
     }),
@@ -79,16 +85,15 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
   onSubmitNote() {
     console.log(this.formNote.getRawValue());
     if (this.formNote.invalid) return;
-    const newNote = {
-      id: Math.floor(Math.random() * 1000),
-      title: this.formNote.getRawValue().title,
-      text: this.formNote.getRawValue().text,
-      data: new Date().toLocaleDateString(),
-      favorite: false,
-      categoryId: this.formNote.getRawValue().categoryId,
-      tagsIds: [],
-    };
-    this.notesService.createNote(newNote).subscribe({
+
+    const data = new Note(
+      this.formNote.getRawValue().title,
+      this.formNote.getRawValue().text,
+      this.formNote.getRawValue().categoryId,
+      this.formNote.getRawValue().tagsIds
+    );
+
+    this.notesService.createNote(data).subscribe({
       complete: () => this.dialogRef.close(),
     });
   }

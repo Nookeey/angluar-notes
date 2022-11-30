@@ -11,21 +11,23 @@ export interface NoteAttrs {
 }
 
 export class Note {
-  id: number;
+  id = Math.floor(Math.random() * 1000);
   title: string;
   text: string;
-  data: string;
-  favorite: boolean;
+  data = new Date().toLocaleDateString();
+  favorite = false;
   categoryId: number;
   tagsIds: number[];
 
-  constructor(attrs: NoteAttrs) {
-    this.id = attrs.id;
-    this.title = attrs.title;
-    this.text = attrs.text;
-    this.data = attrs.data;
-    this.favorite = attrs.favorite;
-    this.categoryId = attrs.categoryId;
-    this.tagsIds = attrs.tagsIds;
+  constructor(
+    title: string,
+    text: string,
+    categoryId: number,
+    tagsIds: number[]
+  ) {
+    this.title = title;
+    this.text = text;
+    this.categoryId = categoryId || 0;
+    this.tagsIds = tagsIds || [];
   }
 }

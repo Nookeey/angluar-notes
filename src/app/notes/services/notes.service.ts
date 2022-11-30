@@ -22,9 +22,11 @@ export class NotesService {
       );
   }
 
-  createNote(data: NoteAttrs): Observable<Note> {
+  createNote(data: Note): Observable<Note> {
     return this.http.post<Note>(`${environment.apiUrl}/notes`, data).pipe(
-      map((noteAttrs) => new Note(noteAttrs)),
+      map(
+        (note) => new Note(note.title, note.text, note.categoryId, note.tagsIds)
+      ),
       tap((note) => this.notes.next([...this.notes.getValue(), note]))
     );
   }

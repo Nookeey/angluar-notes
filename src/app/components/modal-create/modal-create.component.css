@@ -1,0 +1,2 @@
+form { padding-top: 25px; }
+.form-control:not(:last-child) { margin-bottom: 10px; }
