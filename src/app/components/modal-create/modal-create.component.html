@@ -1,0 +1,42 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-[500px]">
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        matInput
+        [formControl]="form.controls.title"
+        placeholder="Title"
+      />
+      <mat-error *ngIf="form.controls.title.hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field class="w-full">
+      <mat-label>Note</mat-label>
+      <textarea
+        matInput
+        type="text"
+        [formControl]="form.controls.text"
+        placeholder="Note"
+      ></textarea>
+      <mat-error *ngIf="form.controls.text.hasError('required')">
+        Note is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="flex justify-end">
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Save
+    </button>
+  </div>
+</form>

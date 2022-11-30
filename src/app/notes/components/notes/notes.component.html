@@ -1,0 +1,11 @@
+<div class="container mx-auto">
+  <div class="grid grid-cols-4 gap-4">
+    <app-notes-nav></app-notes-nav>
+    <div class="col-span-3 grid grid-cols-2 items-start gap-5">
+      <app-notes-note
+        *ngFor="let note of notes | async"
+        [note]="note"
+      ></app-notes-note>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="p-6 rounded-xl" [style.background-color]="note.categoryId">
+  <h4 class="text-[20px] font-medium mb-4">{{ note.title }}</h4>
+  <p class="text-[14px] text-gray-400 mb-4">{{ note.data }}</p>
+  <p class="text-[16px] mb-4">{{ note.text }}</p>
+  <div class="flex">
+    <div class="flex flex-1 gap-1">
+      <div
+        class="bg-red-600 shadow-red-600 shadow-md text-white text-[14px] font-medium rounded-2xl px-3 py-1"
+      >
+        {{ note.categoryId }}
+      </div>
+      <div
+        *ngFor="let tag of note.tags"
+        class="bg-gray-300 text-[14px] font-medium rounded-2xl px-3 py-1"
+      >
+        #{{ tag }}
+      </div>
+    </div>
+    <div>
+      {{ note.favorite }}
+    </div>
+  </div>
+</div>
