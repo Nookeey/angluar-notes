@@ -84,6 +84,7 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
 
   onSubmitNote() {
     console.log(this.formNote.getRawValue());
+    return;
     if (this.formNote.invalid) return;
 
     const data = new Note(
