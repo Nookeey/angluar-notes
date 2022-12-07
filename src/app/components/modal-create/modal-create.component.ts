@@ -1,3 +1,6 @@
+import { CategoryColor } from './../../notes/interfaces/category-color';
+import { Tag } from './../../notes/interfaces/tag';
+import { Category } from './../../notes/interfaces/category';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { NotesService } from 'src/app/notes/services/notes.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -5,17 +8,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CategoriesService } from 'src/app/notes/services/categories.service';
 import { TagsService } from 'src/app/notes/services/tags.service';
 import { Note } from 'src/app/notes/interfaces/note';
+import { CategoriesColorsService } from 'src/app/notes/services/categories-colors.service';
 
 type noteFormGroup = FormGroup<{
   title: FormControl<string>;
   text: FormControl<string>;
-  categoryId?: FormControl<number>;
-  tagsIds?: FormControl<number[]>;
+  category?: FormControl<Category>;
+  tags?: FormControl<Tag[]>;
 }>;
 
 type categoryFormGroup = FormGroup<{
   name: FormControl<string>;
-  color: FormControl<string>;
+  color: FormControl<CategoryColor>;
 }>;
 
 type tagFormGroup = FormGroup<{
@@ -30,6 +34,7 @@ type tagFormGroup = FormGroup<{
 export class ModalCreateComponent implements OnInit, OnDestroy {
   catrgories = this.categoriesService.categories;
   tags = this.tagsService.tags;
+  categoryColors = this.categoriesColorsService.categoryColors;
 
   formNote = new FormGroup({
     title: new FormControl('', {
@@ -40,25 +45,27 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
       validators: [Validators.required],
       nonNullable: true,
     }),
-    categoryId: new FormControl(0, {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
-    tagsIds: new FormControl([], {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
+    category: new FormControl(),
+    tags: new FormControl(),
   });
 
-  formCategory: categoryFormGroup = new FormGroup({
+  formCategory = new FormGroup({
     name: new FormControl('', {
       validators: [Validators.required],
       nonNullable: true,
     }),
-    color: new FormControl('', {
-      validators: [Validators.required],
-      nonNullable: true,
-    }),
+    color: new FormControl(
+      new CategoryColor({
+        id: 0,
+        name: '',
+        light: '',
+        dark: '',
+      }),
+      {
+        validators: [Validators.required],
+        nonNullable: true,
+      }
+    ),
   });
 
   formTag: tagFormGroup = new FormGroup({
@@ -73,7 +80,8 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
     private dialogRef: MatDialogRef<ModalCreateComponent>,
     private notesService: NotesService,
     private categoriesService: CategoriesService,
-    private tagsService: TagsService
+    private tagsService: TagsService,
+    private categoriesColorsService: CategoriesColorsService
   ) {}
 
   ngOnInit(): void {}
@@ -83,15 +91,13 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
   }
 
   onSubmitNote() {
-    console.log(this.formNote.getRawValue());
-    return;
     if (this.formNote.invalid) return;
 
     const data = new Note(
       this.formNote.getRawValue().title,
       this.formNote.getRawValue().text,
-      this.formNote.getRawValue().categoryId,
-      this.formNote.getRawValue().tagsIds
+      this.formNote.getRawValue().category,
+      this.formNote.getRawValue().tags
     );
 
     this.notesService.createNote(data).subscribe({
@@ -102,12 +108,11 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
   onSubmitCategory() {
     console.log(this.formCategory.getRawValue());
     if (this.formCategory.invalid) return;
-    const newCategory = {
-      id: Math.floor(Math.random() * 1000),
-      name: this.formCategory.getRawValue().name,
-      color: this.formCategory.getRawValue().color,
-    };
-    this.categoriesService.createCategory(newCategory).subscribe({
+    const data = new Category(
+      this.formCategory.getRawValue().name,
+      this.formCategory.getRawValue().color
+    );
+    this.categoriesService.createCategory(data).subscribe({
       complete: () => this.dialogRef.close(),
     });
   }
@@ -123,4 +128,15 @@ export class ModalCreateComponent implements OnInit, OnDestroy {
       complete: () => this.dialogRef.close(),
     });
   }
+
+  // getTagNameById(id?: string) {
+  //   console.log(id);
+
+  //   this.tags
+  //     .pipe(map((tags) => tags.find((tag) => tag.id === Number(id))))
+  //     .subscribe((tag) => {
+  //       this.tag = tag?.name;
+  //       console.log(this.tag);
+  //     });
+  // }
 }

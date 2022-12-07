@@ -1,56 +1,97 @@
 {
   "notes": [
     {
-      "id": 993,
-      "title": "sadsa d",
-      "text": "sad sad ",
-      "data": "30.11.2022",
-      "favorite": false,
-      "categoryId": 223,
-      "tagsIds": [
-        771,
-        19
+      "id": 691,
+      "data": "7.12.2022",
+      "isFavorite": true,
+      "title": "sa d",
+      "text": "sa dsa ",
+      "category": {
+        "id": 526,
+        "name": "Frontend",
+        "color": {
+          "id": 0,
+          "name": "Amber",
+          "light": "rgb(253 230 138)",
+          "dark": "rgb(245 158 11)"
+        }
+      },
+      "tags": [
+        {
+          "id": 992,
+          "name": "dasdsad"
+        }
       ]
     },
     {
-      "id": 940,
-      "data": "30.11.2022",
-      "favorite": false,
-      "title": "dsfkdslkf",
-      "text": "dsffkldslf",
-      "categoryId": 592,
-      "tagsIds": [19]
-    },
-    {
-      "id": 121,
-      "data": "30.11.2022",
-      "favorite": false,
-      "title": "sadkjsadkas",
-      "text": "kdsajfjdslf",
-      "categoryId": 547,
-      "tagsIds": [19, 771]
+      "id": 847,
+      "data": "7.12.2022",
+      "isFavorite": false,
+      "title": "sad",
+      "text": "sadsa",
+      "category": {
+        "id": 756,
+        "name": "dasdasd",
+        "color": {
+          "id": 3,
+          "name": "Purple",
+          "light": "rgb(233 213 255)",
+          "dark": "rgb(168 85 247)"
+        }
+      },
+      "tags": null
     }
   ],
   "categories": [
     {
-      "id": 223,
-      "name": "Amber",
-      "color": "rgb(253 230 138)"
+      "id": 756,
+      "name": "dasdasd",
+      "color": {
+        "id": 3,
+        "name": "Purple",
+        "light": "rgb(233 213 255)",
+        "dark": "rgb(168 85 247)"
+      }
     },
     {
-      "id": 955,
-      "name": "Lime",
-      "color": "rgb(217 249 157)"
+      "id": 596,
+      "name": "UX",
+      "color": {
+        "id": 1,
+        "name": "Lime",
+        "light": "rgb(217 249 157)",
+        "dark": "rgb(132 204 22)"
+      }
     },
     {
-      "id": 592,
-      "name": "Cyan",
-      "color": "rgb(165 243 252)"
+      "id": 526,
+      "name": "Frontend",
+      "color": {
+        "id": 0,
+        "name": "Amber",
+        "light": "rgb(253 230 138)",
+        "dark": "rgb(245 158 11)"
+      }
     },
     {
-      "id": 547,
-      "name": "Purple",
-      "color": "rgb(233 213 255)"
+      "id": 642,
+      "name": "Backend",
+      "color": {
+        "id": 2,
+        "name": "Cyan",
+        "light": "rgb(165 243 252)",
+        "dark": "rgb(6 182 212)"
+      }
+    },
+    {
+      "id": 607,
+      "name": "Blue",
+      "color": {
+        "id": 5,
+        "name": "Blue",
+        "light": "rgb(191 219 254)",
+        "dark": "rgb(59 130 246)"
+      }
     }
   ],
   "tags": [
@@ -61,6 +102,56 @@
     {
       "id": 19,
       "name": "UX/UI"
+    },
+    {
+      "id": 992,
+      "name": "dasdsad"
+    },
+    {
+      "id": 95,
+      "name": "cxzcxzc"
+    },
+    {
+      "id": 157,
+      "name": "nbnbn"
+    }
+  ],
+  "category-colors": [
+    {
+      "id": 0,
+      "name": "Amber",
+      "light": "rgb(253 230 138)",
+      "dark": "rgb(245 158 11)"
+    },
+    {
+      "id": 1,
+      "name": "Lime",
+      "light": "rgb(217 249 157)",
+      "dark": "rgb(132 204 22)"
+    },
+    {
+      "id": 2,
+      "name": "Cyan",
+      "light": "rgb(165 243 252)",
+      "dark": "rgb(6 182 212)"
+    },
+    {
+      "id": 3,
+      "name": "Purple",
+      "light": "rgb(233 213 255)",
+      "dark": "rgb(168 85 247)"
+    },
+    {
+      "id": 4,
+      "name": "Red",
+      "light": "rgb(254 202 202)",
+      "dark": "rgb(239 68 68)"
+    },
+    {
+      "id": 5,
+      "name": "Blue",
+      "light": "rgb(191 219 254)",
+      "dark": "rgb(59 130 246)"
     }
   ]
 }

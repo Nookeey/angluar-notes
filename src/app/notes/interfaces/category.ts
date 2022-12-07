@@ -1,17 +1,18 @@
+import { CategoryColor } from './category-color';
+
 export interface CategoryAttrs {
   id: number;
   name: string;
-  color: string;
+  color: CategoryColor;
 }
 
 export class Category {
-  id: number;
+  id = Math.floor(Math.random() * 1000);
   name: string;
-  color: string;
+  color: CategoryColor;
 
-  constructor(attrs: CategoryAttrs) {
-    this.id = attrs.id;
-    this.name = attrs.name;
-    this.color = attrs.color;
+  constructor(name: string, color: CategoryColor) {
+    this.name = name;
+    this.color = color;
   }
 }

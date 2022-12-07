@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { NotesService } from 'src/app/notes/services/notes.service';
 import { ModalCreateComponent } from '../modal-create/modal-create.component';
 
 @Component({
@@ -8,7 +9,7 @@ import { ModalCreateComponent } from '../modal-create/modal-create.component';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private notesService: NotesService) {}
 
   ngOnInit(): void {}
 
@@ -20,5 +21,9 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed();
+  }
+
+  getAllNotes() {
+    this.notesService.fetchNotes().subscribe();
   }
 }

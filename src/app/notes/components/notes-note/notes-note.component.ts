@@ -4,6 +4,7 @@ import { NoteAttrs } from './../../interfaces/note';
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { TagsService } from '../../services/tags.service';
+import { NotesService } from '../../services/notes.service';
 
 @Component({
   selector: 'app-notes-note',
@@ -12,32 +13,18 @@ import { TagsService } from '../../services/tags.service';
 })
 export class NotesNoteComponent implements OnInit {
   @Input() note!: NoteAttrs;
-  category: Category | undefined;
-  tags: Tag[] | [] = [];
   defaultBgColor = 'rgb(203 213 225)';
 
-  constructor(
-    private categoriesService: CategoriesService,
-    private tagsService: TagsService
-  ) {}
+  constructor(private notesService: NotesService) {}
 
-  ngOnInit(): void {
-    this.categoriesService
-      .getCategoryById(this.note.categoryId)
-      .subscribe((category) => {
-        this.category = category;
+  ngOnInit(): void {}
 
-        if (category === undefined) {
-          this.category = new Category({
-            id: 0,
-            name: '',
-            color: this.defaultBgColor,
-          });
-        }
-      });
+  setFavorite(id: number): void {
+    this.note.isFavorite = !this.note.isFavorite;
+    this.notesService.setFavorite(id, this.note.isFavorite).subscribe();
+  }
 
-    this.tagsService
-      .getTagsByIds(this.note.tagsIds)
-      .subscribe((tag) => (this.tags = tag));
+  deleteNote(id: number): void {
+    this.notesService.deleteNote(id).subscribe();
   }
 }

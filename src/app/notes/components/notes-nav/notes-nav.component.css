@@ -1,0 +1,13 @@
+mat-expansion-panel.mat-expansion-panel.ng-star-inserted.mat-expanded.mat-expansion-panel-spacing {
+  box-shadow: none;
+}
+mat-expansion-panel.mat-expansion-panel.ng-star-inserted {
+  box-shadow: none;
+}
+mat-expansion-panel.mat-expansion-panel.border-t-2.border-gray-200.ng-tns-c118-0.ng-star-inserted,
+mat-expansion-panel.mat-expansion-panel.border-t-2.border-gray-200.mat-expanded.mat-expansion-panel-spacing.ng-star-inserted {
+  border-radius: 0;
+}
+.mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+  background: transparent;
+}

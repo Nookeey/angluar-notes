@@ -1,3 +1,4 @@
+import { Tag } from './tag';
 import { Category } from './category';
 
 export interface NoteAttrs {
@@ -5,9 +6,9 @@ export interface NoteAttrs {
   title: string;
   text: string;
   data: string;
-  favorite: boolean;
-  categoryId: number;
-  tagsIds: number[];
+  isFavorite: boolean;
+  category?: Category;
+  tags?: Tag[];
 }
 
 export class Note {
@@ -15,19 +16,14 @@ export class Note {
   title: string;
   text: string;
   data = new Date().toLocaleDateString();
-  favorite = false;
-  categoryId: number;
-  tagsIds: number[];
+  isFavorite = false;
+  category?: Category;
+  tags?: Tag[];
 
-  constructor(
-    title: string,
-    text: string,
-    categoryId: number,
-    tagsIds: number[]
-  ) {
+  constructor(title: string, text: string, category?: Category, tags?: Tag[]) {
     this.title = title;
     this.text = text;
-    this.categoryId = categoryId || 0;
-    this.tagsIds = tagsIds || [];
+    this.category = category;
+    this.tags = tags;
   }
 }

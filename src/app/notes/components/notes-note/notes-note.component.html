@@ -1,24 +1,50 @@
-<div class="p-6 rounded-xl" [ngStyle]="{ 'background-color': category?.color }">
+<div
+  class="p-6 rounded-xl note"
+  [ngStyle]="{
+    'background-color': note.category ? note.category.color.light : '#ececec'
+  }"
+>
   <h2 class="text-[20px] font-medium mb-4">{{ note.title }}</h2>
   <p class="text-[14px] text-gray-400 mb-4">{{ note.data }}</p>
   <p class="mb-4">{{ note.text }}</p>
   <div class="flex">
-    <div class="flex flex-1 gap-1">
+    <div class="flex flex-1 gap-1 gap-y-2 flex-wrap">
       <div
-        *ngIf="category && category.id !== 0"
-        class="bg-red-600 shadow-red-600 shadow-md text-white text-[14px] font-medium rounded-2xl px-3 py-1"
+        *ngIf="note.category"
+        class="text-white text-[14px] font-medium rounded-2xl px-3 py-1"
+        [ngStyle]="{
+          'background-color': note.category.color.dark,
+          'box-shadow': note.category.color.light
+        }"
       >
-        {{ category.name }}
+        {{ note.category.name }}
       </div>
       <div
-        *ngFor="let tag of tags"
+        *ngFor="let tag of note.tags"
         class="bg-gray-200 shadow-gray-200 shadow-md text-[14px] font-medium rounded-2xl px-3 py-1"
       >
         {{ tag.name }}
       </div>
     </div>
     <div>
-      {{ note.favorite }}
+      <button mat-icon-button class="mr-3">
+        <mat-icon
+          [style]="note.isFavorite ? 'color: orange' : 'color: gray'"
+          [class]="note.isFavorite ? null : 'material-icons-outlined'"
+          class="cursor-pointer"
+          (click)="setFavorite(note.id)"
+          >grade</mat-icon
+        >
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" yPosition="above" xPosition="before">
+        <button mat-menu-item (click)="deleteNote(note.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </div>
