@@ -12,6 +12,7 @@ import { NgxMasonryOptions } from 'ngx-masonry';
 })
 export class NotesComponent implements OnInit {
   notes = this.notesService.notes;
+  title = 'Notes';
 
   public myOptions: NgxMasonryOptions = {
     gutter: 20,
@@ -35,5 +36,9 @@ export class NotesComponent implements OnInit {
     });
 
     this.categoriesColorsService.fetchCategoryColors().subscribe();
+  }
+
+  setTitle(event: string) {
+    this.title = event;
   }
 }

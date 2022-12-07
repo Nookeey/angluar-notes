@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Category } from '../../interfaces/category';
+import { Tag } from '../../interfaces/tag';
 import { CategoriesService } from '../../services/categories.service';
 import { NotesService } from '../../services/notes.service';
 import { TagsService } from '../../services/tags.service';
@@ -11,6 +13,7 @@ import { TagsService } from '../../services/tags.service';
 export class NotesNavComponent implements OnInit {
   categories = this.categoriesService.categories;
   tags = this.tagsService.tags;
+  @Output() title = new EventEmitter();
 
   constructor(
     private categoriesService: CategoriesService,
@@ -21,18 +24,22 @@ export class NotesNavComponent implements OnInit {
   ngOnInit(): void {}
 
   getAllNotes() {
+    this.title.emit('Notes');
     this.notesService.fetchNotes().subscribe();
   }
 
   getFavoriteNotes() {
+    this.title.emit('Favorite');
     this.notesService.getFavoriteNotes().subscribe();
   }
 
-  getNotesByCategory(id: number) {
-    this.notesService.getNotesByCategory(id).subscribe();
+  getNotesByCategory(category: Category) {
+    this.title.emit(category.name);
+    this.notesService.getNotesByCategory(category.id).subscribe();
   }
 
-  getNotesByTag(id: number) {
-    this.notesService.getNotesByTag(id).subscribe();
+  getNotesByTag(tag: Tag) {
+    this.title.emit(`#${tag.name}`);
+    this.notesService.getNotesByTag(tag.id).subscribe();
   }
 }
