@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NotesService } from 'src/app/notes/services/notes.service';
+import { NotesService } from 'src/app/modules/notes/services/notes.service';
 import { ModalCreateComponent } from '../modal-create/modal-create.component';
 
 @Component({

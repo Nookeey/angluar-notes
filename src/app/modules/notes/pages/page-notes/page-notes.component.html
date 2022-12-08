@@ -1,0 +1,9 @@
+<h1 class="text-[48px] font-[600] mb-4">{{ title }}</h1>
+<ngx-masonry [options]="myOptions">
+  <app-notes-note
+    ngxMasonryItem
+    class="note"
+    *ngFor="let note of notes | async"
+    [note]="note"
+  ></app-notes-note>
+</ngx-masonry>

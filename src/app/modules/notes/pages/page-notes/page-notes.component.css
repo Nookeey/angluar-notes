@@ -1,3 +1,5 @@
+:host { width: 100%; }
+
 .note{ width: calc(50% - 10px); margin-bottom: 20px; }
 
 @media (max-width: 1199.98px) {

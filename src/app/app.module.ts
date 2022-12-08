@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NotesModule } from './notes/notes.module';
+import { NotesModule } from './modules/notes/notes.module';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalCreateComponent } from './components/modal-create/modal-create.component';

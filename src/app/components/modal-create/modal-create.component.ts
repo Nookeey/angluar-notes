@@ -1,14 +1,14 @@
-import { CategoryColor } from './../../notes/interfaces/category-color';
-import { Tag } from './../../notes/interfaces/tag';
-import { Category } from './../../notes/interfaces/category';
+import { CategoryColor } from './../../modules/notes/interfaces/category-color';
+import { Tag } from './../../modules/notes/interfaces/tag';
+import { Category } from './../../modules/notes/interfaces/category';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
-import { NotesService } from 'src/app/notes/services/notes.service';
+import { NotesService } from 'src/app/modules/notes/services/notes.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CategoriesService } from 'src/app/notes/services/categories.service';
-import { TagsService } from 'src/app/notes/services/tags.service';
-import { Note } from 'src/app/notes/interfaces/note';
-import { CategoriesColorsService } from 'src/app/notes/services/categories-colors.service';
+import { CategoriesService } from 'src/app/modules/notes/services/categories.service';
+import { TagsService } from 'src/app/modules/notes/services/tags.service';
+import { Note } from 'src/app/modules/notes/interfaces/note';
+import { CategoriesColorsService } from 'src/app/modules/notes/services/categories-colors.service';
 
 type noteFormGroup = FormGroup<{
   title: FormControl<string>;
