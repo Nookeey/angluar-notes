@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NgxMasonryOptions } from 'ngx-masonry';
 import { NotesService } from '../../services/notes.service';
 
@@ -9,18 +10,19 @@ import { NotesService } from '../../services/notes.service';
 })
 export class PageNotesComponent {
   notes = this.notesService.notes;
-  @Input() title: string = 'Notes';
+  title = this.notesService.title;
 
   public myOptions: NgxMasonryOptions = {
     gutter: 20,
     resize: true,
   };
 
-  constructor(private notesService: NotesService) {}
+  constructor(
+    private notesService: NotesService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    console.log(this.title);
-
     this.notesService.fetchNotes().subscribe({
       error: (err) => console.log(err),
     });

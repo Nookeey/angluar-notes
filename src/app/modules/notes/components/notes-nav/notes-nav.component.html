@@ -2,12 +2,14 @@
   <div
     class="font-[600] cursor-pointer py-4 px-6 hover:bg-yellow-400 rounded-[40px]"
     (click)="getAllNotes()"
+    routerLink="/notes"
   >
     All
   </div>
   <div
     class="font-[600] cursor-pointer py-4 px-6 mb-2 hover:bg-yellow-400 rounded-[40px]"
     (click)="getFavoriteNotes()"
+    routerLink="/notes"
   >
     Favorite
   </div>
@@ -20,6 +22,7 @@
         *ngFor="let category of categories | async"
         class="flex items-center px-2 py-2 text-gray-500 cursor-pointer hover:bg-yellow-400 rounded-[40px]"
         (click)="getNotesByCategory(category)"
+        routerLink="/notes"
       >
         <div
           class="w-3 h-3 rounded-full mr-5"
@@ -37,6 +40,7 @@
         *ngFor="let tag of tags | async"
         class="flex items-center px-2 py-2 text-gray-500 cursor-pointer hover:bg-yellow-400 rounded-[40px]"
         (click)="getNotesByTag(tag)"
+        routerLink="/notes"
       >
         <div>#{{ tag.name }}</div>
       </div>

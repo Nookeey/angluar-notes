@@ -9,8 +9,6 @@ import { TagsService } from './services/tags.service';
   styleUrls: ['./notes.component.css'],
 })
 export class NotesComponent implements OnInit {
-  title = 'Notes';
-
   constructor(
     private categoriesService: CategoriesService,
     private tagsService: TagsService,
@@ -23,9 +21,5 @@ export class NotesComponent implements OnInit {
     this.tagsService.fetchTags().subscribe();
 
     this.categoriesColorsService.fetchCategoryColors().subscribe();
-  }
-
-  setTitle(event: string) {
-    this.title = event;
   }
 }

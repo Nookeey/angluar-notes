@@ -25,10 +25,6 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: 'notes/create',
-    component: PageCreateComponent,
-  },
 ];
 
 @NgModule({

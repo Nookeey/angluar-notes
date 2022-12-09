@@ -13,7 +13,6 @@ import { TagsService } from '../../services/tags.service';
 export class NotesNavComponent implements OnInit {
   categories = this.categoriesService.categories;
   tags = this.tagsService.tags;
-  @Output() title = new EventEmitter();
 
   constructor(
     private categoriesService: CategoriesService,
@@ -24,22 +23,18 @@ export class NotesNavComponent implements OnInit {
   ngOnInit(): void {}
 
   getAllNotes() {
-    this.title.emit('Notes');
     this.notesService.fetchNotes().subscribe();
   }
 
   getFavoriteNotes() {
-    this.title.emit('Favorite');
     this.notesService.getFavoriteNotes().subscribe();
   }
 
   getNotesByCategory(category: Category) {
-    this.title.emit(category.name);
-    this.notesService.getNotesByCategory(category.id).subscribe();
+    this.notesService.getNotesByCategory(category).subscribe();
   }
 
   getNotesByTag(tag: Tag) {
-    this.title.emit(`#${tag.name}`);
-    this.notesService.getNotesByTag(tag.id).subscribe();
+    this.notesService.getNotesByTag(tag).subscribe();
   }
 }

@@ -1,9 +1,5 @@
-import { Tag } from './../../interfaces/tag';
-import { Category } from './../../interfaces/category';
 import { NoteAttrs } from './../../interfaces/note';
 import { Component, Input, OnInit } from '@angular/core';
-import { CategoriesService } from '../../services/categories.service';
-import { TagsService } from '../../services/tags.service';
 import { NotesService } from '../../services/notes.service';
 
 @Component({
@@ -13,7 +9,6 @@ import { NotesService } from '../../services/notes.service';
 })
 export class NotesNoteComponent implements OnInit {
   @Input() note!: NoteAttrs;
-  defaultBgColor = 'rgb(203 213 225)';
 
   constructor(private notesService: NotesService) {}
 

@@ -5,7 +5,6 @@ import { NotesComponent } from './notes.component';
 import { NotesRoutingModule } from './notes-routing.module';
 import { NotesNoteComponent } from './components/notes-note/notes-note.component';
 import { NotesNavComponent } from './components/notes-nav/notes-nav.component';
-import { NotesModalCreateComponent } from './components/notes-modal-create/notes-modal-create.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxMasonryModule } from 'ngx-masonry';
@@ -18,7 +17,6 @@ import { PageCreateComponent } from './pages/page-create/page-create.component';
     NotesComponent,
     NotesNoteComponent,
     NotesNavComponent,
-    NotesModalCreateComponent,
     PageNotesComponent,
     PageCreateComponent,
   ],
